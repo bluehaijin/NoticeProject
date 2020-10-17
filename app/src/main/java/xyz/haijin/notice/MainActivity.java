@@ -41,7 +41,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         init();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); //隐藏状态栏
         this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//设置屏幕常亮
+
+        Intent intentMusic = new Intent(MainActivity.this,MusicServer.class);
+        startService(intentMusic);
 //        verticalRollTextView.startAutoScroll();
+    }
+
+    protected void onStop(){
+        Intent intent = new Intent(MainActivity.this,MusicServer.class);
+        stopService(intent);
+        super.onStop();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        onStop();
     }
 
     /**
@@ -72,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void handleMessage(Message msg) {
             if(msg.what==0x00){
-                notice.scrollBy(notice.getScrollX()+2,notice.getScrollY());
+                notice.scrollBy(notice.getScrollX()+8,notice.getScrollY());
                 handler.sendEmptyMessageDelayed(0x00, 10);
                 if (!flag) {
 //                    handler.sendEmptyMessageDelayed(0x00, 10);
