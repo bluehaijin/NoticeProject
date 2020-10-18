@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Intent intentMusic = new Intent(MainActivity.this,MusicServer.class);
         startService(intentMusic);
+
 //        verticalRollTextView.startAutoScroll();
     }
 
@@ -92,15 +93,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 handler.sendEmptyMessageDelayed(0x00, 10);
                 if (!flag) {
 //                    handler.sendEmptyMessageDelayed(0x00, 10);
-//                    Log.d(TAG, "handleMessage: 发送消息");
+////                    Log.d(TAG, "handleMessage: 发送消息");
 //                    handler.sendEmptyMessageDelayed(0x01, 1000);
 //                    handler.sendEmptyMessageDelayed(0x02, 1000);
-////                    handler.sendEmptyMessageDelayed(0x02, 10);
-                    flag = true;
+//                    handler.sendEmptyMessageDelayed(0x02, 10);
+//                    flag = true;
                 }
             }
             else if(msg.what==0x01){//刷新页面数据
-                handler.sendEmptyMessageDelayed(0x01, 4000);
+                handler.sendEmptyMessageDelayed(0x01, 50);
             }
         }
     };
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         noticeAdapter.notifyDataSetChanged();
         handler.sendEmptyMessageDelayed(0x00,10);
         handler.sendEmptyMessageDelayed(0x01,10);
-        handler.sendEmptyMessageDelayed(0x02,5000);
+        handler.sendEmptyMessageDelayed(0x02,1000);
     }
 
     @Override
